@@ -19,9 +19,14 @@
                 <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
             </div>
             <form method="post">
-                <h3>Find a Safe Route</h3>
+                <h3>Safe Pass</h3>
                <div class="row">
                     <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" name="sex" class="form-control" placeholder="M / F/ X*"/>
+                            <input type="text" name="descent" class="form-control" placeholder="Ethinicity (W,B,H,O,A)*"/>
+                            <input type="text" name="age" class="form-control" placeholder="AGE*"/>
+                        </div>
                         <div class="form-group">
                             <input type="text" name="start" class="form-control" placeholder="Start Location*"/>
                             <i class="bi bi-search" onclick="searchstart()"></i>
@@ -31,12 +36,21 @@
                             <i class="bi bi-search" onclick="searchdest()"></i>
                         </div>
                         <div class="form-group">
+                            <select class="form-select" aria-label="Transport" name="transport">
+                                <option selected value="driving-car">Driving</option>
+                                <option value="cycling-road">Cycling</option>
+                                <option value="foot-walking">Walking</option>
+                              </select>
+                        </div>
+                        <div class="form-group">
                             <button type="button" name="btnSubmit" class="btnContact" onclick="findpath()" clickable="False">Get Safest Path</button>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12" style="width: 100%;">
                         <div class="form-group">
-                            <div name="mapdata"></div>
+                            <div name="mapdata" class="mapclass">
+                                <iframe id="mapframe" name="mapframe" class="mapclass" src="/map"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>

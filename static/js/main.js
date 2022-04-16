@@ -1,12 +1,58 @@
 function findpath(){
     console.log("findpath!");
+    transport = document.getElementsByName('transport')[0].value
+    sex = document.getElementsByName('sex')[0].value
+    descent = document.getElementsByName('descent')[0].value
+    age = document.getElementsByName('age')[0].value
+    time = getActualTime()
+
+    console.log(sex,descent,age,time,"~~~~~~~~~~~~~~~~~~~~~~~~")
+
     $.ajax({
         url: "/getpath",
+        type: 'POST',
+        data : {
+            transport : transport,
+            sex : sex,
+            descent : descent,
+            age : age,
+            time : time
+        },
+        success: function (response) {
+            console.log(response)
+            callmap()
+            jsonresp = JSON.stringify(response)
+        },
+        error: function (response) {
+            console.log('fail')
+        }
+    });
+}
+
+function getActualTime ()
+{var today = new Date()
+var h = today.getHours()
+console.log(h)
+if(h < 10){
+    h = "0" + h
+}
+var min = today.getMinutes()
+console.log(min)
+if(min < 10){
+    min = "0" + min
+}
+
+final = h.toString() +min.toString()
+return final
+}
+
+function callmap(){
+    $.ajax({
+        url: "/map",
         type: 'GET',
         success: function (response) {
             console.log(response)
-            jsonresp = JSON.stringify(response)
-            document.getElementsByName('mapdata')[0].innerHTML = jsonresp
+            document.getElementsByName('mapframe')[0].src = '/map'
         },
         error: function (response) {
             console.log('fail')
