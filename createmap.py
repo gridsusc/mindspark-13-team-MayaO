@@ -54,7 +54,7 @@ def plotroute(route1,danger1,route2,danger2,route3,danger3):
         if danger1 in [4,5]:
             color = 'red'
         # Ploting ant-route
-        plugins.AntPath(route_lats_longs,color=color).add_to(map_plot_antroute)
+        plugins.AntPath(route_lats_longs,color='green').add_to(map_plot_antroute)
 
     if route2 != None:
         # added lat long to route
@@ -66,7 +66,7 @@ def plotroute(route1,danger1,route2,danger2,route3,danger3):
         if danger2 in [4,5]:
             color = 'red'
         # Ploting ant-route
-        plugins.AntPath(route_lats_longs,color=color).add_to(map_plot_antroute)
+        plugins.AntPath(route_lats_longs,color='orange').add_to(map_plot_antroute)
 
     if route3 != None:
         # added lat long to route
@@ -78,6 +78,6 @@ def plotroute(route1,danger1,route2,danger2,route3,danger3):
         if danger3 in [4,5]:
             color = 'red'
         # Ploting ant-route
-        plugins.AntPath(route_lats_longs,color=color).add_to(map_plot_antroute)
+        plugins.AntPath(route_lats_longs,color='red').add_to(map_plot_antroute)
 
     map_plot_antroute.save('templates/map.html')

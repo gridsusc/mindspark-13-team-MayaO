@@ -6,7 +6,7 @@ function findpath(){
     age = document.getElementsByName('age')[0].value
     time = getActualTime()
 
-    console.log(sex,descent,age,time,"~~~~~~~~~~~~~~~~~~~~~~~~")
+    console.log(sex,descent,age,time)
 
     $.ajax({
         url: "/getpath",
@@ -32,12 +32,10 @@ function findpath(){
 function getActualTime ()
 {var today = new Date()
 var h = today.getHours()
-console.log(h)
 if(h < 10){
     h = "0" + h
 }
 var min = today.getMinutes()
-console.log(min)
 if(min < 10){
     min = "0" + min
 }
@@ -51,7 +49,6 @@ function callmap(){
         url: "/map",
         type: 'GET',
         success: function (response) {
-            console.log(response)
             document.getElementsByName('mapframe')[0].src = '/map'
         },
         error: function (response) {
